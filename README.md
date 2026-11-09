@@ -1,6 +1,6 @@
 # dotfiles
 
-Managed with [GNU stow](https://www.gnu.org/software/stow/). Each top-level folder is a package that mirrors `$HOME`.
+I like using Ghostty as my terminal and this specific configuration was built around that. Managed with [GNU stow](https://www.gnu.org/software/stow/). Each top-level folder is a package that mirrors `$HOME`.
 
 ## Setup
 

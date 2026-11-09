@@ -13,6 +13,8 @@ stow zsh starship ghostty nvim lazygit tmux
 
 `brew bundle` installs everything in `Brewfile` (CLI tools plus Ghostty; if Ghostty was installed manually, bundle errors on that one line, which is harmless). First `nvim` launch installs plugins, parsers and Mason tools. Machine-specific config (PATH etc.) goes in `~/.zshrc.local`, which is not tracked.
 
+Update everything (brew, zsh plugins, nvim plugins) with `dotup`, which runs `update.sh`. It does not commit; see `GUIDE.md`.
+
 ## Layout
 
 | Package | Links to |

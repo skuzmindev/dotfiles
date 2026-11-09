@@ -263,6 +263,42 @@ cd ~/dotfiles && stow foo
 
 Add the tool to `Brewfile` and the package name to the `stow` line in the README.
 
+## 6. Updating
+
+One command updates everything this repo manages:
+
+```sh
+dotup        # alias for ~/dotfiles/update.sh
+```
+
+It runs, in order:
+
+1. `brew update`, then installs or upgrades only the formulae in the `Brewfile` (not everything on your machine) and cleans up old versions.
+2. `git pull --ff-only` in each zsh plugin under `~/.zsh/plugins/`.
+3. Neovim plugins (`:Lazy sync`, which includes LazyVim itself) and treesitter parsers, headless.
+4. A reminder to restart tmux if the running server is older than the installed version.
+
+It **never commits**. When it finishes, it prints `git status`. If `nvim/.config/nvim/lazy-lock.json` changed, open nvim and check that things still work. Then commit it (`lg` in `~/dotfiles`). The "already installed" warnings from brew are harmless.
+
+Not covered by the script, so do these by hand now and then:
+
+| What | How |
+|---|---|
+| Mason tools (language servers, formatters) | `:Mason`, then `U` |
+| Ghostty | Ghostty menu, Check for Updates (it was installed manually, not via brew) |
+| LazyVim starter files (`init.lua`, `lua/config/*`) | never auto-update; skim lazyvim.org/news for breaking changes |
+
+If an nvim update breaks something:
+
+```sh
+cd ~/dotfiles && git checkout nvim/.config/nvim/lazy-lock.json   # back to the committed versions
+# then in nvim: :Lazy restore
+```
+
+After upgrading tmux, detach and run `tmux kill-server`. Otherwise the old server keeps running and a newer client can refuse to attach ("protocol version mismatch").
+
+Rhythm: run `dotup` about once a month, use nvim for a day, then commit the lockfile.
+
 ## Where to learn more
 
 | Resource | Use it for |

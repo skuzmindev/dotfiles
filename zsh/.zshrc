@@ -50,5 +50,7 @@ if command -v lazygit >/dev/null 2>&1; then
   alias lg=lazygit
 fi
 
+alias dotup="$HOME/dotfiles/update.sh"
+
 # Machine-specific config (PATH etc.), not tracked in this repo
 [ -f "$HOME/.zshrc.local" ] && source "$HOME/.zshrc.local"

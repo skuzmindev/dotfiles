@@ -40,5 +40,15 @@ if command -v starship >/dev/null 2>&1; then
   eval "$(starship init zsh)"
 fi
 
+if command -v nvim >/dev/null 2>&1; then
+  export EDITOR=nvim VISUAL=nvim
+  alias vi=nvim vim=nvim
+fi
+
+if command -v lazygit >/dev/null 2>&1; then
+  export LG_CONFIG_FILE="$HOME/.config/lazygit/config.yml"
+  alias lg=lazygit
+fi
+
 # Machine-specific config (PATH etc.), not tracked in this repo
 [ -f "$HOME/.zshrc.local" ] && source "$HOME/.zshrc.local"
